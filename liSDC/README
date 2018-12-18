@@ -1,0 +1,42 @@
+main.py         includes some examples of how to run certain routines and input parameters for Boris-SDC & GMRES-SDC
+problem_mt.py   includes input parameters for particle (position, velocity, z0, omegaB)
+controller.py   class Stepsize defines the size and number of time steps for "Convergence", "Bref" routines
+
+List of available routines:
+ 
+Trajectory(params, outkeys, keyinteg, numsteps)
+    
+    -output: X,Y,Z
+
+    
+EnergySDC(params, outkeys, keyinteg, numsteps)
+EnergyGMRes(params, outkeys, keyinteg, numsteps)
+EnergyBrs(params, outkeys, numsteps)
+    
+    -output: number of time steps, error
+    
+    
+ConvergenceSDC(params, outkeys, keyinteg)
+ConvergenceGMRes(params, outkeys, keyinteg)
+ConvergenceBrs(params, outkeys)
+    
+    -output1: omega*dt, final X, final Y, final Z
+    -output2: omega*dt, ierror
+    
+    
+BrefSDC(params, outkeys, keyinteg)
+BrefGMRes(params, outkeys, keyinteg)
+BrefBrs(params, outkeys)
+    
+    -output1: omega*dt, Standard_deviation
+    -output2: number of R.H.S., Standard_deviation
+    
+Non-adiabatic regime (default) - Bref compares the magnetic field at numerically computed reflection points against high accuracy solution
+magrefE13N7I5 file contains reference solution computed numerically with a very small time step. 
+Valid only for params['tend'] = 16.0 and nonadiabatic inputs in problem_mt.py file
+
+Near adiabatic limit - Bref compares the magnetic field at numerically computed reflection points against theoretical value
+main.py:        set params['case'] =  'adiabatic'
+controller.py:  uncomment Adiabatic case in class Stepsize and change self.st parameter
+problem_mt.py:  uncomment Adiabatic case in class problem
+
