@@ -16,8 +16,8 @@ def main():
     
     # Input parameters:
     params = dict()
-    params['case'] =  'nonadiabatic'
-    params['tend'] =  16.0
+    params['case'] =  'nonadiabatic' #'adiabatic'
+    params['tend'] =  16.0 #50.0
     params['itera'] = 0
     params['picit'] = 0
     

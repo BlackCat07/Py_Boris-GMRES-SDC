@@ -133,8 +133,6 @@ class Integrator(object):
 
         return [S, ST, SQ, Sx, QQ, Q, dt, wi]
 
-    # Implementation of 39(a,b) equations,
-    # Journal of Computational Physics 295 (2015) 456-474
     def Sweeper(self, nd, it, x, v, x0, v0, x_, v_, keyinteg):
 
         S = self.S
@@ -390,7 +388,7 @@ class Integrator(object):
         
             summ = 0
             # Check the number of reflection points:
-            if len(self.breflist) > 5: 
+            if len(self.breflist) > 1:  # CHANGED
                 for idx, item in enumerate(self.breflist):
                     summ += (self.Bref - self.breflist[idx])**2
                 

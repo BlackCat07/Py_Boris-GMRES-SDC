@@ -11,14 +11,14 @@ from particleIntegrator import Integrator, Particle, DataOut
 class Stepsize(object):
     def __init__ (self):
         sn = 8000           # should be integer
-        self.st = 7
+        self.st = 6
         self.step = np.zeros(self.st)
         
         # Nonadiabatic case:
-        self.step[:] = [32*sn, 16*sn, 8*sn, 4*sn, 2*sn, sn, sn/2]
+        self.step[:] = [16*sn, 8*sn, 4*sn, 2*sn, sn, sn/2]
         
         # Adiabatic case:
-        #self.step[:] = [4.E6, 2.E6, 1.E6, 0.5E6, 0.25E6]
+        #self.step[:] = [0.25E6, 0.5E6, 1.E6, 2.E6, 4.E6]
 
 
 class Inform(object):
